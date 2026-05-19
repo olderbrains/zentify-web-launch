@@ -305,4 +305,220 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255​​​​​​​​​​​​​​​​
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .social-links a:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .social-links svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Decorative line */
+        .deco-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        @media (max-width: 600px) {
+            .countdown {
+                gap: 0.8rem;
+            }
+            .countdown-value {
+                min-width: 50px;
+            }
+            .notify-form {
+                flex-direction: column;
+                border-radius: 12px;
+            }
+            .notify-form button {
+                border-radius: 0 0 12px 12px;
+            }
+            .logo-topleft {
+                top: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .logo-topleft img {
+                width: 60px;
+                height: 60px;
+            }
+            .container {
+                padding-top: 5.5rem;
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <img src="assets/background.svg" alt="Background">
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Floating orbs -->
+    <div class="orb" style="width:6px;height:6px;background:rgba(212,175,55,0.6);top:20%;left:10%;animation-duration:8s;"></div>
+    <div class="orb" style="width:4px;height:4px;background:rgba(212,175,55,0.4);top:60%;left:85%;animation-duration:10s;"></div>
+    <div class="orb" style="width:8px;height:8px;background:rgba(212,175,55,0.3);top:30%;left:70%;animation-duration:12s;"></div>
+    <div class="orb" style="width:5px;height:5px;background:rgba(245,230,163,0.5);top:75%;left:25%;animation-duration:9s;"></div>
+    <div class="orb" style="width:3px;height:3px;background:rgba(255,255,255,0.4);top:45%;left:50%;animation-duration:11s;"></div>
+    <div class="orb" style="width:7px;height:7px;background:rgba(212,175,55,0.35);top:85%;left:65%;animation-duration:7s;"></div>
+
+    <div class="logo-topleft">
+        <img src="assets/logo.png" alt="Zentify Aroma Logo">
+    </div>
+
+    <div class="container">
+        <h1 class="brand-name">Zentify Aroma</h1>
+        <p class="tagline">Luxury Fragrances</p>
+
+        <div class="deco-line"></div>
+
+        <p class="launch-text">Something exquisite is coming</p>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-item">
+                <span class="countdown-value" id="days">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="countdown-item">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="countdown-item">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="countdown-item">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+
+        <div class="notify-section">
+            <p class="notify-text">Be the first to know</p>
+            <form class="notify-form" onsubmit="handleNotify(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Notify Me</button>
+            </form>
+        </div>
+
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer - Launch: May 23, 2026 at 12:00 AM
+        const launchDate = new Date('2026-05-23T00:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = '<p class="launch-text" style="color:#d4af37;">We Have Launched!</p>';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Floating particles
+        function createParticles() {
+            const container = document.getElementById('particles');
+            const colors = ['rgba(212,175,55,0.6)', 'rgba(245,230,163,0.4)', 'rgba(255,255,255,0.3)', 'rgba(184,134,11,0.5)'];
+
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = (Math.random() * 10 + 8) + 's';
+                particle.style.animationDelay = (Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Notify form handler
+        function handleNotify(e) {
+            e.preventDefault();
+            const input = e.target.querySelector('input');
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'Thank You!';
+            btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
+            input.value = '';
+            setTimeout(() => {
+                btn.textContent = 'Notify Me';
+                btn.style.background = '';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
