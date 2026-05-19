@@ -3,56 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zentify Aroma — Launching Soon</title>
+    <title>Zentify Aroma — Luxury Fragrances</title>
     <link rel="icon" type="image/png" href="assets/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             min-height: 100vh;
-            overflow: hidden;
             font-family: 'Montserrat', sans-serif;
             color: #fff;
             position: relative;
+            background: #0a0510;
         }
 
         .background {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -2;
         }
 
         .background img {
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
         }
 
         .overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(15, 5, 20, 0.88) 0%, rgba(40, 10, 50, 0.78) 50%, rgba(20, 5, 30, 0.92) 100%);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(15, 5, 20, 0.85) 0%, rgba(40, 10, 50, 0.75) 50%, rgba(20, 5, 30, 0.9) 100%);
             z-index: -1;
         }
 
-        /* Floating particles */
         .particles {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 0;
         }
@@ -65,71 +54,48 @@
         }
 
         @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) rotate(0deg) scale(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(-100px) rotate(720deg) scale(1);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh) rotate(0deg) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100px) rotate(720deg) scale(1); opacity: 0; }
         }
 
-        /* Floating golden orbs */
-        .orb {
+        /* Top nav */
+        .top-nav {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(1px);
-            animation: floatOrb ease-in-out infinite;
-            pointer-events: none;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            background: linear-gradient(180deg, rgba(10, 5, 16, 0.7) 0%, transparent 100%);
+            backdrop-filter: blur(8px);
         }
 
-        @keyframes floatOrb {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(30px, -40px) scale(1.1);
-            }
-            50% {
-                transform: translate(-20px, -80px) scale(0.9);
-            }
-            75% {
-                transform: translate(40px, -30px) scale(1.05);
-            }
+        .top-nav img {
+            width: 70px; height: 70px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
         }
 
-        .container {
+        section {
             position: relative;
             z-index: 1;
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            padding: 2rem;
             text-align: center;
-        }
-
-        .logo-topleft {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 10;
-            animation: fadeInDown 1s ease-out 0.3s both;
-        }
-
-        .logo-topleft img {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
+            padding-top: 8rem;
         }
 
         .brand-name {
@@ -142,7 +108,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: fadeInDown 1s ease-out 0.5s both;
+            animation: fadeInDown 1s ease-out 0.3s both;
         }
 
         .tagline {
@@ -152,7 +118,15 @@
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 3rem;
-            animation: fadeInDown 1s ease-out 0.7s both;
+            animation: fadeInDown 1s ease-out 0.5s both;
+        }
+
+        .deco-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.7s both;
         }
 
         .launch-text {
@@ -160,7 +134,7 @@
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 400;
             color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             animation: fadeInUp 1s ease-out 0.9s both;
         }
 
@@ -224,29 +198,187 @@
             50% { opacity: 0.3; }
         }
 
-        .notify-section {
-            animation: fadeInUp 1s ease-out 1.3s both;
+        .scroll-cue {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(212, 175, 55, 0.6);
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        .notify-text {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+        .scroll-cue::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(180deg, #d4af37, transparent);
+            margin: 0.5rem auto 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 8px); }
+        }
+
+        .section-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(212, 175, 55, 0.8);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .story-text {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .story-text p { margin-bottom: 1.5rem; }
+        .story-text p:last-child { margin-bottom: 0; }
+
+        .story-quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin: 2rem 0;
+            line-height: 1.5;
+        }
+
+        .scents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .scent-card {
+            padding: 2.5rem 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .scent-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.1);
+        }
+
+        .scent-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .scent-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+
+        .scent-notes {
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
             margin-bottom: 1rem;
+        }
+
+        .scent-desc {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.5rem;
+            color: #d4af37;
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+            color: #fff;
+        }
+
+        .feature-desc {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.6;
+        }
+
+        .notify-section {
+            text-align: center;
+            padding-bottom: 4rem;
         }
 
         .notify-form {
             display: flex;
             gap: 0;
-            max-width: 420px;
+            max-width: 460px;
             margin: 0 auto;
             border-radius: 50px;
             overflow: hidden;
             border: 1px solid rgba(212, 175, 55, 0.3);
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .notify-form:focus-within {
@@ -263,12 +395,9 @@
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
         }
 
-        .notify-form input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-        }
+        .notify-form input::placeholder { color: rgba(255, 255, 255, 0.4); }
 
         .notify-form button {
             padding: 1rem 2rem;
@@ -290,16 +419,43 @@
             color: #1a1a1a;
         }
 
+        .perks {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .perks span::before {
+            content: '✦';
+            color: #d4af37;
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            background: rgba(10, 5, 16, 0.6);
+            backdrop-filter: blur(10px);
+        }
+
         .social-links {
-            margin-top: 3rem;
             display: flex;
             gap: 1.5rem;
-            animation: fadeInUp 1s ease-out 1.5s both;
+            justify-content: center;
+            margin-bottom: 1.5rem;
         }
 
         .social-links a {
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             border-radius: 50%;
             border: 1px solid rgba(212, 175, 55, 0.3);
             display: flex;
@@ -308,7 +464,6 @@
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
             background: rgba(255, 255, 255, 0.03);
         }
 
@@ -319,72 +474,64 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
         }
 
-        .social-links svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
+        .social-links svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 1px;
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Decorative line */
-        .deco-line {
-            width: 60px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1s ease-out 0.8s both;
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
-        @media (max-width: 600px) {
-            .overlay {
-                background: linear-gradient(135deg, rgba(15, 5, 20, 0.88) 0%, rgba(40, 10, 50, 0.82) 50%, rgba(20, 5, 30, 0.92) 100%);
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 700px) {
+            .top-nav {
+                padding: 0.9rem 1rem;
             }
-            .logo-topleft {
-                top: 1.2rem;
-                left: calc(50% - 42.5px);
-                transform: none;
+            .top-nav img {
+                width: 60px; height: 60px;
             }
-            .logo-topleft img {
-                width: 85px;
-                height: 85px;
+            section {
+                padding: 3.5rem 1.25rem;
             }
-            .container {
-                padding: 7rem 1.25rem 2rem;
-                justify-content: flex-start;
+            .hero {
+                padding-top: 6rem;
             }
             .brand-name {
                 font-size: 2.4rem;
                 letter-spacing: 2px;
-                margin-bottom: 0.75rem;
             }
             .tagline {
                 font-size: 0.7rem;
                 letter-spacing: 3px;
                 margin-bottom: 2rem;
-            }
-            .deco-line {
-                margin-bottom: 1.5rem;
             }
             .launch-text {
                 font-size: 1.1rem;
@@ -392,7 +539,7 @@
             }
             .countdown {
                 gap: 0.5rem;
-                margin-bottom: 3rem;
+                margin-bottom: 2.5rem;
             }
             .countdown-value {
                 font-size: 2rem;
@@ -401,25 +548,35 @@
             .countdown-label {
                 font-size: 0.55rem;
                 letter-spacing: 2px;
-                margin-top: 0.75rem;
             }
             .separator {
                 font-size: 1.5rem;
-                margin-top: 0.25rem;
             }
-            .notify-section {
-                width: 100%;
-                max-width: 340px;
+            .scents-grid,
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
             }
             .notify-form {
                 flex-direction: column;
                 border-radius: 12px;
+                max-width: 340px;
             }
             .notify-form button {
                 border-radius: 0 0 12px 12px;
             }
-            .social-links {
-                margin-top: 2.5rem;
+            .story-text {
+                font-size: 0.95rem;
+            }
+            .story-quote {
+                font-size: 1.1rem;
+            }
+            .scroll-cue {
+                display: none;
+            }
+            .perks {
+                gap: 0.75rem;
+                font-size: 0.65rem;
             }
         }
     </style>
@@ -430,27 +587,16 @@
     </div>
     <div class="overlay"></div>
 
-    <!-- Floating particles -->
     <div class="particles" id="particles"></div>
 
-    <!-- Floating orbs -->
-    <div class="orb" style="width:6px;height:6px;background:rgba(212,175,55,0.6);top:20%;left:10%;animation-duration:8s;"></div>
-    <div class="orb" style="width:4px;height:4px;background:rgba(212,175,55,0.4);top:60%;left:85%;animation-duration:10s;"></div>
-    <div class="orb" style="width:8px;height:8px;background:rgba(212,175,55,0.3);top:30%;left:70%;animation-duration:12s;"></div>
-    <div class="orb" style="width:5px;height:5px;background:rgba(245,230,163,0.5);top:75%;left:25%;animation-duration:9s;"></div>
-    <div class="orb" style="width:3px;height:3px;background:rgba(255,255,255,0.4);top:45%;left:50%;animation-duration:11s;"></div>
-    <div class="orb" style="width:7px;height:7px;background:rgba(212,175,55,0.35);top:85%;left:65%;animation-duration:7s;"></div>
-
-    <div class="logo-topleft">
+    <nav class="top-nav">
         <img src="assets/logo.png" alt="Zentify Aroma Logo">
-    </div>
+    </nav>
 
-    <div class="container">
+    <section class="hero">
         <h1 class="brand-name">Zentify Aroma</h1>
         <p class="tagline">Luxury Fragrances</p>
-
         <div class="deco-line"></div>
-
         <p class="launch-text">Something exquisite is coming</p>
 
         <div class="countdown" id="countdown">
@@ -475,14 +621,62 @@
             </div>
         </div>
 
-        <div class="notify-section">
-            <p class="notify-text">Be the first to know</p>
-            <form class="notify-form" onsubmit="handleNotify(event)">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Notify Me</button>
-            </form>
-        </div>
+        <div class="scroll-cue">Scroll</div>
+    </section>
 
+    <section class="reveal">
+        <p class="section-eyebrow">Our Story</p>
+        <h2 class="section-title">Crafted in Whispers, Worn in Memory</h2>
+        <div class="deco-line"></div>
+        <div class="story-text">
+            <p>Zentify Aroma was born from a simple belief — that fragrance is not an accessory, but a signature. Each note we blend is sourced with intention, aged with patience, and bottled with reverence.</p>
+            <p class="story-quote">"A scent is the closest thing to a soul in physical form."</p>
+            <p>From the rare Bulgarian rose to ethically harvested oud, our master perfumers compose every fragrance as a story — one that lingers long after the wearer has left the room.</p>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <p class="section-eyebrow">The Promise</p>
+        <h2 class="section-title">Why Zentify</h2>
+        <div class="deco-line"></div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">✦</div>
+                <h4 class="feature-title">Master Blended</h4>
+                <p class="feature-desc">Each composition is hand-balanced by a master perfumer with over two decades of craft.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">❋</div>
+                <h4 class="feature-title">Ethically Sourced</h4>
+                <p class="feature-desc">From farm to flacon — every ingredient is traceable and sustainably gathered.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">◈</div>
+                <h4 class="feature-title">Long-Lasting</h4>
+                <p class="feature-desc">Extrait de parfum concentration. A single application carries through your day.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="notify-section reveal">
+        <p class="section-eyebrow">Join the List</p>
+        <h2 class="section-title">Be the First to Know</h2>
+        <p class="section-sub">Subscribe and receive 15% off your first bottle plus exclusive launch-day access.</p>
+
+        <form class="notify-form" onsubmit="handleNotify(event)">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+
+        <div class="perks">
+            <span>Early Access</span>
+            <span>15% Launch Discount</span>
+            <span>Free Samples</span>
+        </div>
+    </section>
+
+    <footer>
         <div class="social-links">
             <a href="#" aria-label="Instagram">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
@@ -494,10 +688,11 @@
                 <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
         </div>
-    </div>
+        <p class="footer-brand">ZENTIFY AROMA</p>
+        <p class="copyright">© 2026 Zentify Aroma · All Rights Reserved</p>
+    </footer>
 
     <script>
-        // Countdown Timer - Launch: May 23, 2026 at 12:00 AM
         const launchDate = new Date('2026-05-23T00:00:00').getTime();
 
         function updateCountdown() {
@@ -523,12 +718,11 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Floating particles
         function createParticles() {
             const container = document.getElementById('particles');
             const colors = ['rgba(212,175,55,0.6)', 'rgba(245,230,163,0.4)', 'rgba(255,255,255,0.3)', 'rgba(184,134,11,0.5)'];
 
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 25; i++) {
                 const particle = document.createElement('div');
                 particle.classList.add('particle');
                 const size = Math.random() * 4 + 2;
@@ -541,10 +735,8 @@
                 container.appendChild(particle);
             }
         }
-
         createParticles();
 
-        // Notify form handler
         function handleNotify(e) {
             e.preventDefault();
             const input = e.target.querySelector('input');
@@ -557,6 +749,16 @@
                 btn.style.background = '';
             }, 3000);
         }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
