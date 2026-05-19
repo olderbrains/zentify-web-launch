@@ -42,7 +42,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(15, 5, 20, 0.75) 0%, rgba(40, 10, 50, 0.6) 50%, rgba(20, 5, 30, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(15, 5, 20, 0.88) 0%, rgba(40, 10, 50, 0.78) 50%, rgba(20, 5, 30, 0.92) 100%);
             z-index: -1;
         }
 
@@ -357,11 +357,59 @@
         }
 
         @media (max-width: 600px) {
+            .overlay {
+                background: linear-gradient(135deg, rgba(15, 5, 20, 0.88) 0%, rgba(40, 10, 50, 0.82) 50%, rgba(20, 5, 30, 0.92) 100%);
+            }
+            .logo-topleft {
+                top: 1.2rem;
+                left: calc(50% - 42.5px);
+                transform: none;
+            }
+            .logo-topleft img {
+                width: 85px;
+                height: 85px;
+            }
+            .container {
+                padding: 7rem 1.25rem 2rem;
+                justify-content: flex-start;
+            }
+            .brand-name {
+                font-size: 2.4rem;
+                letter-spacing: 2px;
+                margin-bottom: 0.75rem;
+            }
+            .tagline {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+                margin-bottom: 2rem;
+            }
+            .deco-line {
+                margin-bottom: 1.5rem;
+            }
+            .launch-text {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+            }
             .countdown {
-                gap: 0.8rem;
+                gap: 0.5rem;
+                margin-bottom: 3rem;
             }
             .countdown-value {
-                min-width: 50px;
+                font-size: 2rem;
+                min-width: 45px;
+            }
+            .countdown-label {
+                font-size: 0.55rem;
+                letter-spacing: 2px;
+                margin-top: 0.75rem;
+            }
+            .separator {
+                font-size: 1.5rem;
+                margin-top: 0.25rem;
+            }
+            .notify-section {
+                width: 100%;
+                max-width: 340px;
             }
             .notify-form {
                 flex-direction: column;
@@ -370,18 +418,8 @@
             .notify-form button {
                 border-radius: 0 0 12px 12px;
             }
-            .logo-topleft {
-                top: 1rem;
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            .logo-topleft img {
-                width: 60px;
-                height: 60px;
-            }
-            .container {
-                padding-top: 5.5rem;
-                justify-content: flex-start;
+            .social-links {
+                margin-top: 2.5rem;
             }
         }
     </style>
